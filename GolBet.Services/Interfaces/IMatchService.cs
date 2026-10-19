@@ -6,6 +6,10 @@ namespace GolBet.Services.Interfaces;
 
 public interface IMatchService
 {
+    // Agregamos el parámetro opcional 'search'
+    Task<IEnumerable<MatchDto>> GetBoardAsync(MatchStatus? status = null, string? search = null);
+
+    
     /// <summary>Match board: all active matches ordered by date.</summary>
     Task<IEnumerable<MatchDto>> GetBoardAsync(MatchStatus? status = null);
         Task<MatchDetailDto?> GetDetailAsync(int id);
@@ -13,6 +17,5 @@ public interface IMatchService
     Task CreateAsync(MatchFormDto dto);
     Task UpdateAsync(MatchFormDto dto);
     Task DeactivateAsync(int id);
-
 }
 
